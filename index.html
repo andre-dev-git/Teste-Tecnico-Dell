@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/ea243476ba.js" crossorigin="anonymous"></script>
+    <script src="./Dados.js"></script>
+    <script src="./Trechos.js"></script>
+    <script src="./Viagem.js"></script>
+    <script src="./main.js"></script>
+    <title>Dely - Transportadora</title>
+</head>
+
+<body onload="iniciar()">
+    <div id="relatorio">
+
+    </div>
+    <header class="flex-c">
+        <img src="./img/dell-logo.png">
+        <br>
+        <button onclick="fecharPrograma()">Sair</button>
+    </header>
+    <div id="main-cont" class="flex-c">
+        <div class="cont-module flex-c">
+            <h2>Simulação</h2>
+            <div class="container-translate flex-c" id="previa-translate">
+                <div class="container-atual flex-c">
+                    <label>Origem</label>
+                    <select id="cidades-previa-1">
+                        <option value="" selected disabled>Cidades</option>
+                    </select>
+                    <br>
+                    <label>Destino</label>
+                    <select id="cidades-previa-2">
+                        <option value="" selected disabled>Cidades</option>
+                    </select>
+                    <br>
+                    <label>Caminhão</label>
+                    <select id="trucks-previa">
+                        <option value="" selected disabled>Caminhões</option>
+                        <option value="PEQUENO">PEQUENO</option>
+                        <option value="MÉDIO">MÉDIO</option>
+                        <option value="GRANDE">GRANDE</option>
+                    </select>
+                    <br>
+                    <button onclick="simularTrecho()">Simular</button>
+                </div>
+                <div class="container-atual flex-c">
+                    <p id="previa">Resultado</p>
+                    <button onclick="this.parentNode.parentNode.style.transform = 'translate(0px)'">Retornar</button>
+                </div>
+            </div>
+        </div>
+        <div class="cont-module flex-c">
+            <h2>Cadastrar Transporte</h2>
+            <div class="container-translate flex-c" id="cadastro-translate">
+                <div class="container-atual flex-c">
+                    <label>Trechos</label>
+                    <br>
+                    <label>Cidade</label>
+                    <div style="width: 100%;" id="form-trechos">
+                        <select class="cidades-trechos">
+                            <option value="" selected disabled>Cidades</option>
+                        </select>
+                        <i class="fa-solid fa-plus fa-1x" style="color: #8eaadb;" onclick="adicionarInput(this)"></i>
+                    </div>
+                    <br>
+                    <button onclick="verificarTrechos()">Avançar</button>
+                </div>
+                <div class="container-atual flex-c">
+                    <label>Produtos</label>
+                    <br>
+                    <label>Nome</label>
+                    <input type="text" id="cadastro-produto-nome">
+                    <label>Quantidade</label>
+                    <input type="number" id="cadastro-produto-qtd">
+                    <label>Peso Unitário(kg)</label>
+                    <input type="number" step=".1" id="cadastro-produto-peso">
+                    <br>
+                    <button onclick="adicionaProduto()" class="button-alternative">Cadastrar Produto</button>
+                    <br>
+                    <button onclick="montarViagem()">Avançar</button>
+                </div>
+                <div class="container-atual flex-c">
+                    <p id="texto-sucesso">Sucesso!</p>
+                    <button onclick="resetarViagem()">Retornar</button>
+                </div>
+            </div>
+        </div>
+        <div class="cont-module flex-c">
+            <div class="container-translate flex-c" id="cadastro-translate">
+                <div class="container-atual flex-c">
+                    <h2>Resultados</h2>
+                    <br>
+                    <br>
+                    <button onclick="(dados.gerarRelatorio())">Gerar Relatório</button>
+                </div>
+            </div>
+</body>
+
+</html>
