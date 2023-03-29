@@ -26,12 +26,15 @@ class Dados {
             dadosRelatorio.dadosTrecho.forEach(trecho => {
                 html += "Valor do Trecho " + this.cidadesIndex[trecho.origem] + " - " + this.cidadesIndex[trecho.destino] + ": " + trecho.valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + "<br>"
             })
+            const valorTruckPequeno = parseFloat(parseFloat(dadosRelatorio.custoPorModadelidade.pequeno) * parseInt(dadosRelatorio.trucks.pequeno))
+            const valorTruckMedio = parseFloat(parseFloat(dadosRelatorio.custoPorModadelidade.medio) * parseInt(dadosRelatorio.trucks.medio))
+            const valorTruckGrande = parseFloat(parseFloat(dadosRelatorio.custoPorModadelidade.grande) * parseInt(dadosRelatorio.trucks.grande))
             html += "Quantidade de caminhões de PEQUENO PORTE: " + dadosRelatorio.trucks.pequeno + "<br>"
-            html += "Custo com caminhões de PEQUENO PORTE: " + parseFloat(parseFloat(dadosRelatorio.custoPorModadelidade.pequeno) * parseInt(dadosRelatorio.trucks.pequeno)).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + " <br> "
+            html += "Custo com caminhões de PEQUENO PORTE: " + parseFloat(valorTruckPequeno * viagem.distanciaTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + " <br> "
             html += "Quantidade de caminhões de MÉDIO PORTE: " + dadosRelatorio.trucks.medio + "<br>"
-            html += "Custo com caminhões de MÉDIO PORTE: " + parseFloat(parseFloat(dadosRelatorio.custoPorModadelidade.medio) * parseInt(dadosRelatorio.trucks.medio)).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + " <br> "
+            html += "Custo com caminhões de MÉDIO PORTE: " + parseFloat(valorTruckMedio * viagem.distanciaTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + " <br> "
             html += "Quantidade de caminhões de GRANDE PORTE: " + dadosRelatorio.trucks.grande + "<br>"
-            html += "Custo com caminhões de GRANDE PORTE: " + parseFloat(parseFloat(dadosRelatorio.custoPorModadelidade.grande) * parseInt(dadosRelatorio.trucks.grande)).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + " <br> "
+            html += "Custo com caminhões de GRANDE PORTE: " + parseFloat(valorTruckGrande * viagem.distanciaTotal).toLocaleString('pt-br', { style: 'currency', currency: 'BRL' }) + " <br> "
             html += "Total de caminhões deslocados: " + dadosRelatorio.numTrucks + "<br>"
             html += "Peso Total: " + dadosRelatorio.pesoTotal.toFixed(2) + " toneladas <br>"
             html += "Total de itens transportados: " + dadosRelatorio.quantidadeProdutos + "</p>"
